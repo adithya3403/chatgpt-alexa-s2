@@ -1,10 +1,13 @@
 const Data = require("./dataModel.js");
 
 const getData = async (req, res) => {
-    // get data in the format: {"topics": ["topic1", "topic2", "topic3"]}
-    const data = await Data.find();
-    const topics = data.map((item) => item.topic);
-    res.json({ topics });
+    try {
+        // display only topic name and id
+        const data = await Data.find({}, { topic: 1, _id: 1 });
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 };
 
 const getDataById = async (req, res) => {
