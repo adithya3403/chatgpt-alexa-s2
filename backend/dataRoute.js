@@ -1,10 +1,10 @@
 const express = require("express");
-const { getData, getDataById, saveData, updateData, deleteData } = require("./dataController.js");
+const { getData, getDataByTopic, saveData, updateData, deleteData } = require("./dataController.js");
 
 const router = express.Router();
 
 router.get('/data', getData);
-router.get('/data/:id', getDataById);
+router.get('/data/:topic', getDataByTopic);
 router.post('/data', saveData);
 router.put('/data/:id', updateData);
 router.delete('/data/:id', deleteData);

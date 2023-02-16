@@ -10,9 +10,9 @@ const getData = async (req, res) => {
     }
 };
 
-const getDataById = async (req, res) => {
+const getDataByTopic = async (req, res) => {
     try {
-        const data = await Data.findById(req.params.id);
+        const data = await Data.find({ topic: req.params.topic });
         res.json(data);
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -47,4 +47,4 @@ const deleteData = async (req, res) => {
     }
 };
 
-module.exports = { getData, getDataById, saveData, updateData, deleteData };
+module.exports = { getData, getDataByTopic, saveData, updateData, deleteData };
