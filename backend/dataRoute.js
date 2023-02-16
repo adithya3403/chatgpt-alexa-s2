@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/data', getData);
 router.get('/data/:id', getDataById);
 router.post('/data', saveData);
-router.patch('/data/:id', updateData);
+router.put('/data/:id', updateData);
 router.delete('/data/:id', deleteData);
 
 module.exports = router;
