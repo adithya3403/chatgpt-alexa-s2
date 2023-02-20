@@ -1,9 +1,1 @@
-{
-    "topic": "inheritance",
-    "studentName": "Adithya",
-    "question": "What is the purpose of the super keyword in inheritance?",
-    "variation": "What does the super keyword do in inheritance?",
-    "chatGPTAns": "The super keyword is used to access and call functions on an object's parent. It is used to access methods of the parent class from within a child class. It can also be used to access variables from the parent class, and to pass arguments to the parent's constructor when creating a new instance of the child class.",
-    "studentAns": "the superheroes used to access the parent sign from the child class this can be used as a constructor when we use it as a constructor it called the parent class constructor with does not have any parameters",
-    "rating": "3"
-}
+{"topic":"DBMS","studentName":"Adithya","question":"What is the purpose of a database management system?","variation":"What is the objective of a database management system?","chatGPTAns":"The objective of a database management system is to provide an organized and efficient way to store, manage, and retrieve data. It is designed to allow users to quickly and easily access data from a variety of sources, and to provide a secure and reliable platform for data storage and manipulation.","studentAns":"database management system is to store data in the form of a structure language which helps us in getting data faster it is easy to insert create read update and delete the data","rating":"7"}

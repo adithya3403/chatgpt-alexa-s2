@@ -120,15 +120,21 @@ async function createJSON(topic, question, variation, chatGPTAns, studentAns, sc
 
 
 async function main() {
+    console.log("\n\n\t\tWelcome to the Interview!\n");
     const topics = getTopics();
     const randomTopic = topics[Math.floor(Math.random() * topics.length)];
-    console.log("Topic: " + randomTopic + "\n");
+    console.log("\nTopic: " + randomTopic + "\n");
 
     const questions = getQuestions(randomTopic);
     const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
     const variations = getVariations(randomTopic, randomQuestion);
     const randomVariation = variations[Math.floor(Math.random() * variations.length)];
-    console.log("Question: " + randomVariation + "\nSpeak your answer now:\n");
+    console.log("Question: " + randomVariation);
+
+    // give 5 seconds time and then ask the user to speak the answer
+    console.log("\nStart saying the answer when you see the 'Speak your answer now:' message\n");
+    await new Promise(r => setTimeout(r, 5000));
+    console.log("Speak your answer now:\n");
 
     const chatGPTAns = getAns(randomTopic, randomQuestion, randomVariation);
     // console.log("Answer from ChatGPT: " + chatGPTAns + "\n\nSpeak your answer now:\n");
