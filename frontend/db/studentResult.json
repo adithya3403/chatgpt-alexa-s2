@@ -1,1 +1,9 @@
-{"topic":"encapsulation","studentName":"Adithya","question":"What are the benefits of encapsulation in object-oriented programming?","variation":"What are the benefits of implementing encapsulation in object-oriented programming?","chatGPTAns":"1. Improved code organization: Encapsulation helps to organize the code and class members by grouping related variables and functions into one unit. This makes the code easier to read and maintain.2. Increased security: Encapsulation helps to protect the data from outside interference and misuse by restricting access to the class members.3. Improved reusability: Encapsulation makes it easier to reuse code by allowing the same code to be used in different contexts.4. Improved maintainability: Encapsulation makes it easier to maintain code by allowing changes to be made in one place without affecting the rest of the code.5. Improved extensibility: Encapsulation makes it easier to extend the functionality of a class by allowing new features to be added without affecting the existing code.","studentAns":"the benefits of encapsulation are data security and protection","rating":"9"}
+{
+    "topic": "inheritance",
+    "studentName": "Adithya",
+    "question": "What is the purpose of the super keyword in inheritance?",
+    "variation": "What does the super keyword do in inheritance?",
+    "chatGPTAns": "The super keyword is used to access and call functions on an object's parent. It is used to access methods of the parent class from within a child class. It can also be used to access variables from the parent class, and to pass arguments to the parent's constructor when creating a new instance of the child class.",
+    "studentAns": "the superheroes used to access the parent sign from the child class this can be used as a constructor when we use it as a constructor it called the parent class constructor with does not have any parameters",
+    "rating": "3"
+}
