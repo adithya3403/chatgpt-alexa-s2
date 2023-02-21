@@ -106,7 +106,6 @@ async function createJSON(topic, question, variation, chatGPTAns, studentAns, sc
         "topic": topic,
         "studentName": "Adithya",
         "question": question,
-        "variation": variation,
         "chatGPTAns": chatGPTAns,
         "studentAns": studentAns,
         "rating": score
@@ -131,10 +130,14 @@ async function main() {
     const randomVariation = variations[Math.floor(Math.random() * variations.length)];
     console.log("Question: " + randomVariation);
 
-    // give 5 seconds time and then ask the user to speak the answer
-    console.log("\nStart saying the answer when you see the 'Speak your answer now:' message\n");
-    await new Promise(r => setTimeout(r, 5000));
-    console.log("Speak your answer now:\n");
+    for (let i = 0; i < 5; i++) {
+        await new Promise(r => setTimeout(r, 1000));
+        console.log(5 - i);
+        if (i === 4) {
+            await new Promise(r => setTimeout(r, 1000));
+            console.log("Speak your answer now:\n");
+        }
+    }
 
     const chatGPTAns = getAns(randomTopic, randomQuestion, randomVariation);
     // console.log("Answer from ChatGPT: " + chatGPTAns + "\n\nSpeak your answer now:\n");
