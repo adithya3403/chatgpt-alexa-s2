@@ -2,6 +2,7 @@
 // now we need to display it in the frontend
 
 import React, { useState, useEffect } from "react";
+import DeleteUserButton from "./DeleteUserButton.js";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -56,7 +57,7 @@ const UserList = () => {
                                 <td>{user.rating}</td>
                                 <td>
                                     <Link to={`edit/${user._id}`} className="button is-info is-small mr-1">Edit</Link>
-                                    <button onClick={() => deleteUser(user._id)} className="button is-danger is-small">Delete</button>
+                                    <DeleteUserButton user={user} onDelete={deleteUser} />
                                 </td>
                             </tr>
                         ))}
