@@ -27,18 +27,13 @@
     ```bash
     cd frontend
     npm install
-    ```
-
-4. open a new terminal and run the following commands:
-    ```bash
-    cd frontend
     npm run dev
     ```
 
-5. open another terminal and run the following commands:
+4. open another terminal and run the following commands:
     ```bash
     cd frontend/db
     node index.js
     ```
 
-6. open your database and check!
+5. open your database and check!
