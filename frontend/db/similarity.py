@@ -6,8 +6,8 @@ import sys
 ans1 = sys.argv[1]
 ans2 = sys.argv[2]
 
-# api key
-openai.api_key = "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"
+# create a file named apikey.txt and paste your api key in it
+openai.api_key_path="./apikey.txt"
 
 def generatePrompt(ans1, ans2):
     return "Below are two paragraphs para1, para2. Check if para2 means the same as para1. para2 might be a much general statement of para1.\npara1 :" + ans1 + "para2 :" + ans2 + "\nAnswer with rating bewteen 0 to 10, it must be integers only: "
