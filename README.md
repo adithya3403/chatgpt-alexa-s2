@@ -1,12 +1,15 @@
-# chatgpt-alexa-s2
-
-Project: Virtual Assistant Alexa project using ChatGPT
+# Virtual Assistant Project using ChatGPT
 
 
-STEPS:
+### REQUIREMENTS:
+- nodejs installed
+- npm and npx installed
+- mongodb installed
+- chatgpt account and api key
 
-- must have npm and npx installed 
+<hr></hr>
 
+### STEPS:
 1. go to backend folder and create a .env file with the following content:
     ```env
     OPENAI_API_KEY="..."
@@ -29,19 +32,13 @@ STEPS:
 4. open a new terminal and run the following commands:
     ```bash
     cd frontend
-    npm start
+    npm run dev
     ```
 
-5. open another terminal to connect to the database and run the following commands:
-    ```bash
-    cd frontend/server
-    node server.js
-    ```
-
-6. open another terminal and run the following commands:
+5. open another terminal and run the following commands:
     ```bash
     cd frontend/db
     node index.js
     ```
 
-7. open your database and check!
+6. open your database and check!
