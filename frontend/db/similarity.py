@@ -1,16 +1,12 @@
 import openai
-import sys
-
-
-# command line arguments
-ans1 = sys.argv[1]
-ans2 = sys.argv[2]
+import os
+import json
 
 # create a file named apikey.txt and paste your api key in it
 openai.api_key_path="./apikey.txt"
 
 def generatePrompt(ans1, ans2):
-    return "Below are two paragraphs para1, para2. Check if para2 means the same as para1. para2 might be a much general statement of para1.\npara1 :" + ans1 + "para2 :" + ans2 + "\nAnswer with rating bewteen 0 to 10, it must be integers only: "
+    return "Below is a sentence and array of strings. Check if the sentence means the same as those other strings. The sentence might be a much general statement of those strings.\nsentence :" + ans1 + "strings :" + ans2 + "\nAnswer with rating bewteen 0 to 10, it must be integers only: "
 
 def generate(prompt):
     response = openai.Completion.create(
@@ -21,4 +17,21 @@ def generate(prompt):
     )
     return response
 
-print(generate(generatePrompt(ans1, ans2)).choices[0].text)
+# read the json file 
+with open('answers.json') as f:
+    data = json.load(f)
+
+# get the answers from the json file
+ans1 = data['studentAns']
+ans2 = data['chatGPTAns']
+
+# compare ans1 with every string in ans2
+scores=[]
+for i in ans2:
+    prompt = generatePrompt(ans1, i)
+    response = generate(prompt)
+    rating=response['choices'][0]['text']
+    scores.append(int(rating))
+
+# return the maximum score
+print(max(scores))

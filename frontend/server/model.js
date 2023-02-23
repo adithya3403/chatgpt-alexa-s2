@@ -6,7 +6,10 @@ const Data = new mongoose.Schema({
     "topic": { "type": "String" },
     "question": { "type": "String" },
     "studentAns": { "type": "String" },
-    "chatGPTAns": { "type": "String" },
+    "chatGPTAns": {
+        // this should be an array of 3 strings
+        "type": [String, String, String],
+    },
     "rating": { "type": "Number" }
 });
 

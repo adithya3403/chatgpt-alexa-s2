@@ -42,22 +42,21 @@ function getVariations(topicName, question) {
     return variations;
 };
 
-function getAns(topicName, question, variation) {
-    let answer = '';
+function getAns(topicName, question) {
+    let answers = [];
     Object.keys(Data).forEach((topic) => {
         if (Data[topic].topic === topicName) {
             for (let i = 1; i <= 5; i++) {
                 if (Data[topic].questions[`question${i}`].question === question) {
+                    // add all the answers to the answer array
                     for (let j = 1; j <= 3; j++) {
-                        if (Data[topic].questions[`question${i}`][`variation${j}`].question === variation) {
-                            answer = Data[topic].questions[`question${i}`][`variation${j}`].answer;
-                        }
+                        answers.push(Data[topic].questions[`question${i}`][`variation${j}`].answer);
                     }
                 }
             }
         }
     });
-    return answer;
+    return answers;
 };
 
 async function getVoiceAns() {
@@ -80,9 +79,9 @@ async function getVoiceAns() {
     });
 };
 
-async function getScore(chatGPTAns, studentAns) {
+async function getScore() {
     return new Promise((resolve, reject) => {
-        const command = `python similarity.py ${chatGPTAns} ${studentAns}`;
+        const command = `python similarity.py`;
         exec(command, (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error running Python script: ${error.message}`);
@@ -139,8 +138,9 @@ async function main() {
         }
     }
 
-    const chatGPTAns = getAns(randomTopic, randomQuestion, randomVariation);
-    // console.log("Answer from ChatGPT: " + chatGPTAns + "\n\nSpeak your answer now:\n");
+    // chatgpt answer is an array of 3 answers
+    const chatGPTAns = getAns(randomTopic, randomQuestion);
+    // console.log(chatGPTAns);
 
     const voiceAns = await getVoiceAns();
     // print the last line of the output
@@ -148,14 +148,22 @@ async function main() {
     const lastLine = ans[ans.length - 1];
     console.log("Answer from Voice: " + lastLine + "\n");
 
-    const score = await getScore('"' + chatGPTAns + '"', '"' + lastLine + '"');
+    // write lastLine and array of chatGPTAns into a json file for comparison
+    fs.writeFile('answers.json', JSON.stringify({
+        "studentAns": lastLine,
+        "chatGPTAns": chatGPTAns
+    }), (err) => {
+        if (err) console.log(err);
+    });
+
+    const score = await getScore();
     // console.log("Score: " + score + "\n");
 
     await createJSON(randomTopic, randomQuestion, randomVariation, chatGPTAns, lastLine, score);
     console.log("Thankyou!");
 
-    // after creating the json file, wait for 5 seconds and insert to database
-    await new Promise(r => setTimeout(r, 5000));
+    // after creating the json file, wait for 2 seconds and insert to database
+    await new Promise(r => setTimeout(r, 2000));
     await insertToDB();
 }
 
