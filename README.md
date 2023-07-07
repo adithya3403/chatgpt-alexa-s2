@@ -36,4 +36,4 @@
     node index.js
     ```
 
-5. open your database and check!
+Everything now gets saved in the database
